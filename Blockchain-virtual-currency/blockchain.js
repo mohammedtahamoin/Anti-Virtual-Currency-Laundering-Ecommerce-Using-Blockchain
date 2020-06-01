@@ -1,5 +1,5 @@
 const sha256 = require('sha256');
-const production  = 'https://blockchain-2-virtual-currency.herokuapp.com';
+const production  = 'your production URL';
 const development = process.argv[3];
 const currentNodeUrl = (process.env.NODE_ENV ? production : development);
 const uuid = require('uuid/v1');

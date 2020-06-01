@@ -8,8 +8,7 @@ import { AngularFireList, AngularFireObject, AngularFireDatabase } from 'angular
 export class VirtualCurrencyService {
   virtualCurrency: AngularFireList<any>;
   virtualCurrencyObject: AngularFireObject<any>;
-  // private virtualCurrencyBlockchainUrl = 'http://localhost:5001/';
-  private virtualCurrencyBlockchainUrl = 'https://blockchain-virtual-currency.herokuapp.com/';
+  private virtualCurrencyBlockchainUrl = 'http://localhost:5001/';
 
   constructor(private db: AngularFireDatabase, private http: HttpClient) {
     this.getvirtualCurrency();

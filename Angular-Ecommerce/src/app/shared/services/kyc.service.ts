@@ -8,9 +8,7 @@ import { AngularFireList, AngularFireObject, AngularFireDatabase } from 'angular
 export class KycService {
   kyc: AngularFireList<any>;
   kycObject: AngularFireObject<any>;
-  // private kycBlockchainUrl = 'http://localhost:3001/';
-  private kycBlockchainUrl = 'https://blockchain-kyc.herokuapp.com/';
-
+  private kycBlockchainUrl = 'http://localhost:3001/';
 
   constructor(private db: AngularFireDatabase, private http: HttpClient) {
     this.getkyc();

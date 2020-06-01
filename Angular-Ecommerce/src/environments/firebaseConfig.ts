@@ -1,8 +1,8 @@
 export const FireBaseConfig = {
-  apiKey: 'AIzaSyAclvlQwHh-No2PDwLDcTFa3kDCSIfjH9Q',
-  authDomain: 'angular-ecom-mtech.firebaseapp.com',
-  databaseURL: 'https://angular-ecom-mtech.firebaseio.com/',
-  projectId: 'angular-ecom-mtech',
-  storageBucket: 'angular-ecom-mtech.appspot.com',
-  messagingSenderId: '627028038197'
+  apiKey: 'YOUR_API_KEY',
+  authDomain: 'YOUR_AUTH_DOMAIN',
+  databaseURL: 'YOUR_DATABASE_URL',
+  projectId: 'YOUR_PROJECT_ID',
+  storageBucket: 'YOUR_STORAGE_BUCKET',
+  messagingSenderId: 'YOUR_SENDER_ID'
 };

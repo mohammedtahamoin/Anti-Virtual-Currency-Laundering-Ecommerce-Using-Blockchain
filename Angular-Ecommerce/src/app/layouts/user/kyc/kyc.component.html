@@ -1,0 +1,143 @@
+<div class="container" *ngIf="!isAdmin">
+    <div class="note">
+        <p style="margin-bottom: 0;"><span style="font-weight: bold;">Description:</span> You have to apply for KYC approval in order to enable Virtual Currency. Once your KYC is approved your KYC ID will be displayed here and the Virtual Currency option will be enabled.</p>
+    </div>
+    <div *ngIf="kycStatus === 'APPROVED'" class="card">
+        <div class="card-body">
+            <h2 style="text-align: center">KYC Approved
+                <img src="../../../assets/img/approve2.png" style="height: 70px;" alt="">
+            </h2>
+            <h3 style="text-align: center">Unique KYC ID: {{userDetails.kycId}}</h3>
+        </div>
+    </div>
+    <div *ngIf="kycStatus === 'PENDING'" class="card">
+        <div class="card-body">
+            <h2 style="text-align: center">KYC Approval Pending
+                <img src="../../../assets/img/notapproved.png" style="height: 60px;" alt="">
+            </h2>
+            <h3 style="text-align: center">This Screen will be updated with KYC ID after your KYC is Approved</h3>
+        </div>
+    </div>
+    <div *ngIf="kycStatus === 'DISAPPROVED'" class="card">
+        <div class="card-body">
+            <h2 style="text-align: center">KYC Disapproved
+                <img src="../../../assets/img/notapproved.png" style="height: 60px;" alt="">
+            </h2>
+            <h3 style="text-align: center">For More Details Contact Customer Support</h3>
+        </div>
+    </div>
+    <div *ngIf="kycStatus === 'NONE'" class="card">
+        <div class="card-body">
+            <h2 style="text-align: center">KYC Pending
+                <img src="../../../assets/img/notapproved.png" style="height: 60px;" alt="">
+            </h2>
+            <form #kycform="ngForm" (ngSubmit)="submitKyc(kycform)">
+                <div class="row" style="margin-bottom:10px">
+                    <div class="col-sm-3" style="padding-right: 0;">
+                        <label for="documentName">Document Name</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="documentName" [(ngModel)]="kycForm.documentName"
+                            name="documentName" placeholder="Ex: Birth Ceritificate, Pan Card">
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:10px">
+                    <div class="col-sm-3" style="padding-right: 0;">
+                        <label for="regId">Document ID</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="regId" [(ngModel)]="kycForm.regId" name="regId"
+                            placeholder="Unique Registeration Number">
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:10px">
+                    <div class="col-sm-3" style="padding-right: 0;">
+                        <label for="fullName">Full Name</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="fullName" [(ngModel)]="kycForm.fullName"
+                            name="fullName" placeholder="Name on Document">
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:10px">
+                    <div class="col-sm-3" style="padding-right: 0;">
+                        <label for="address">Address</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="address" [(ngModel)]="kycForm.address"
+                            name="address" placeholder="Present Residental Address">
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:10px">
+                    <div class="col-sm-3" style="padding-right: 0;">
+                        <label for="DOB">Date Of Birth</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="DOB" [(ngModel)]="kycForm.DOB" name="DOB"
+                            placeholder="Ex: 15 March 1996">
+                    </div>
+                </div>
+                <!-- <div class="row" style="margin-bottom:10px">
+                    <div class="col-sm-3" style="padding-right: 0;">
+                        <label for="uploadDocument">Upload Document</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="file" [(ngModel)]="kycForm.uploadDocument" name="uploadDocument">
+                    </div>
+                </div> -->
+                <div class="kyc-actions">
+                    <button class="btn btn-default" type="submit">
+                        <span class="glyphicon glyphicon-envelope"></span>Submit</button>
+                </div>
+            </form>
+            <p style="text-align: center"><b>Note: </b><cite> To get access of Virtual Currency get your KYC
+                    done.</cite></p>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="isAdmin">
+    <div class="note">
+        <p style="margin-bottom: 0;"><span style="font-weight: bold;">Description:</span>  When users apply for KYC approval to enable Virtual Currency services. Admin will be able to see user's requests in this section. They verify the authenticity of the document and provide approvals. </p>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h4 style="text-align: center">Admin Panel
+                <img src="../../../assets/img/approve2.png" style="height: 40px;" alt="">
+            </h4>
+        </div>
+    </div>
+    <div *ngIf="loading" style="padding-top:30px;">
+        <app-card-loader [loop]="4" [height]="800"></app-card-loader>
+    </div>
+    <div *ngIf="!loading && kycList && kycList.length">
+        <div class="card" *ngFor="let kyc of kycList">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <p><b> Document Name: </b> {{kyc.documentName}} </p>
+                        <p><b> Document Id: </b> {{kyc.regId}} </p>
+                        <p><b> Full Name: </b> {{kyc.fullName}} </p>
+                        <p><b> Date of Birth: </b> {{kyc.DOB}} </p>
+                        <p><b> Residental Address: </b> {{kyc.address}} </p>
+                    </div>
+                    <!-- <div class="col-sm-4">
+                                <p><b> Document Image:  </b> {{kyc.uploadDocument}} </p>
+                            </div> -->
+                </div>
+                <div class="kyc-actions">
+                    <a class="btn btn-default btn" (click)="approve(kyc)">Approve</a>
+                    <a class="btn btn-danger btn" (click)="disapprove(kyc)">Disapprove</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!loading && !kycList.length">
+        <div class="card">
+            <div class="card-body">
+                <h4 style="text-align: center">No KYC Approvals Pending
+                    <img src="../../../assets/img/notapproved.png" style="height: 40px;" alt="">
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>

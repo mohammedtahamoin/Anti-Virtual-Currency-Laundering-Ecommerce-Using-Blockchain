@@ -1,0 +1,79 @@
+<div class="container mt-3">
+  <div class="col-md order-md-1">
+    <h4 class="mb-3">Payment Method</h4>
+    <div id="accordion">
+        <div class="card">
+          <div class="card-header">
+                <label class="form-check-label" style="padding-left: 20px">
+                    <input type="radio" class="form-check-input" name="optradio"  data-toggle="collapse" href="#collapseOne"  value="debitcreditCard" [(ngModel)]="paymentMethod">Debit / Credit Cards
+                </label>
+          </div>
+          <div id="collapseOne" class="collapse" data-parent="#accordion">
+            <div class="card-body">
+                <div class="row" style ="margin-bottom:10px">
+                  <div class="col-sm-3" style="padding-right: 0;">
+                    <label for="card-number">Card Number</label>
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control" id="card-number">
+                  </div>
+                  <div class="col-sm-3">
+                    <img src="../../../assets/img/mastercard.png" alt="" style="height: 40px;">
+                    <img src="../../../assets/img/visa.png" alt="" style="height: 40px;">
+                  </div>
+                </div>
+                <div class="row" style ="margin-bottom:10px">
+                  <div class="col-sm-3" style="padding-right: 0;">
+                    <label for="expiry-date">Expiry Date</label>
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control" id="expiry-date" style="display: inline-block;width: 45%" placeholder="MM">
+                    <label style="padding:0 10px">/</label>
+                    <input type="text" class="form-control" id="expiry-date" style="display: inline-block;width: 45%" placeholder="YY">
+                  </div>
+                </div>
+                <div class="row" style ="margin-bottom:10px">
+                    <div class="col-sm-3">
+                        <label for="cvv">CVV</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="cvv" placeholder="Last 3 digit on the card back">
+                    </div>
+                    <div class="col-sm-3">
+                        <img src="../../../assets/img/cvv.png" alt="" style="height: 40px;padding:0 5px">
+                    </div>
+                </div>
+                <div class="row" style ="margin-bottom:10px">
+                    <div class="col-sm-3">
+                        <label for="card-holder">Card Holder</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="card-holder" placeholder="Name on the Card">
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="card" *ngIf="kycStatus==='APPROVED'">
+          <div class="card-header">
+              <label class="form-check-label" style="padding-left: 20px">
+                  <input type="radio" class="form-check-input" name="optradio" [(ngModel)]="paymentMethod" value="virtualCurrency">Virtual Currency
+              </label>
+          </div>
+        </div>
+      
+        <div class="card">
+            <div class="card-header">
+                <label class="form-check-label" style="padding-left: 20px">
+                    <input type="radio" class="form-check-input" name="optradio" [(ngModel)]="paymentMethod" value="COD">Cash On Delivery
+                </label>
+            </div>
+        </div>
+      </div>
+      <div class="billing-actions">
+          <a class="btn btn-default btn-lg"  (click)="orderProduct()">
+            <span class="glyphicon glyphicon-envelope"></span>Confirm Order</a>
+      </div>
+  </div>
+</div> 

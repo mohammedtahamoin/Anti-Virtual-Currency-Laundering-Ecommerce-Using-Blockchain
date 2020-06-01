@@ -1,0 +1,35 @@
+<br>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <ul class="list-group">
+        <li class="list-group-item hoverable">
+          <a [routerLink]="['/users']">My Profile</a>
+        </li>
+        <li *ngIf="isAdmin === false" class="list-group-item hoverable">
+          <a [routerLink]="['/users', {outlets: {'profileOutlet': ['favourite-products']}}]"> Wishlist</a>
+        </li>
+        <li *ngIf="isAdmin === false" class="list-group-item hoverable">
+          <a [routerLink]="['/users', {outlets: {'profileOutlet': ['cart-items']}}]"> Cart</a>
+        </li>
+        <li *ngIf="isAdmin === false && kycStatus === 'APPROVED'" class="list-group-item hoverable">
+          <a [routerLink]="['/users', {outlets: {'profileOutlet': ['virtual-currency']}}]"> Virtual Currency</a>
+        </li>
+        <li class="list-group-item hoverable">
+          <a [routerLink]="['/users', {outlets: {'profileOutlet': ['kyc-details']}}]"> KYC<span *ngIf="isAdmin === true"> Requests </span></a>
+        </li>
+        <li *ngIf="isAdmin === true" class="list-group-item hoverable">
+          <a [routerLink]="['/users', {outlets: {'profileOutlet': ['kyc-blockchain-explorer']}}]"> Kyc Blockchain Explorer</a>
+        </li>
+        <li *ngIf="isAdmin === true" class="list-group-item hoverable">
+          <a [routerLink]="['/users', {outlets: {'profileOutlet': ['vc-blockchain-explorer']}}]"> Virtual Currency Blockchain Explorer</a>
+        </li>
+      </ul>
+   </div>
+    <div class="col-sm-9">
+      <router-outlet name="profileOutlet"></router-outlet>
+    </div>
+  </div>
+</div>

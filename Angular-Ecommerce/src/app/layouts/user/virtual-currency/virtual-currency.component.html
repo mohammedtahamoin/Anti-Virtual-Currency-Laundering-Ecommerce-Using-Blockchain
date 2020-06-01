@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="note">
+    <p style="margin-bottom: 0;"><span style="font-weight: bold;">Description:</span> You can recharge your Virtual Currency or you can send your VC to your another/friend's account.</p>
+  </div>
+  <div class="card">
+      <div class="card-body">
+        <h2 style="text-align: center">Balance</h2>
+        <h3 style="text-align: center">₹ {{ balance || 0 }}</h3>
+      </div>
+  </div>
+  <div class="virtual-currency-actions">
+      <a class="btn btn-primary btn-lg" (click)="showRecharge()">
+        <span class="glyphicon glyphicon-home"></span>
+        Recharge</a>
+      <a class="btn btn-default btn-lg" (click)="showSend()">
+        <span class="glyphicon glyphicon-envelope"></span>Send</a>
+  </div>
+  <div *ngIf="rechargeShow" class="card virtual-currency-actions-card">
+      <div class="card-body">
+        <p class="virtual-currency-actions-heading">Recharge Virtual Currency</p>
+        <div class="row" style ="margin-bottom:10px">
+          <div class="col-sm-3">
+              <label for="amount">Amount</label>
+          </div>
+          <div class="col-sm-6">
+              <input type="number" class="form-control" id="amount"  [(ngModel)]="rechargeAmount" name="amount">
+          </div>
+      </div>
+        <div class="row" style ="margin-bottom:10px">
+          <div class="col-sm-3" style="padding-right: 0;">
+            <label for="card-number">Card Number</label>
+          </div>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="card-number">
+          </div>
+          <div class="col-sm-3">
+            <img src="../../../assets/img/mastercard.png" alt="" style="height: 40px;">
+            <img src="../../../assets/img/visa.png" alt="" style="height: 40px;">
+          </div>
+        </div>
+        <div class="row" style ="margin-bottom:10px">
+          <div class="col-sm-3" style="padding-right: 0;">
+            <label for="expiry-date">Expiry Date</label>
+          </div>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="expiry-date" style="display: inline-block;width: 45%" placeholder="MM">
+            <label style="padding:0 10px">/</label>
+            <input type="text" class="form-control" id="expiry-date" style="display: inline-block;width: 45%" placeholder="YY">
+          </div>
+        </div>
+        <div class="row" style ="margin-bottom:10px">
+            <div class="col-sm-3">
+                <label for="cvv">CVV</label>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="cvv" placeholder="Last 3 digit on the card back">
+            </div>
+            <div class="col-sm-3">
+                <img src="../../../assets/img/cvv.png" alt="" style="height: 40px;padding:0 5px">
+            </div>
+        </div>
+        <div class="row" style ="margin-bottom:10px">
+            <div class="col-sm-3">
+                <label for="card-holder">Card Holder</label>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="card-holder" placeholder="Name on the Card">
+            </div>
+        </div>
+        <div class="virtual-currency-actions">
+            <a class="btn btn-primary" (click)="recharge()">
+              <span class="glyphicon glyphicon-envelope"></span>Pay</a>
+        </div>
+      </div>
+  </div>
+  <div *ngIf="sendShow" class="card virtual-currency-actions-card">
+      <div class="card-body">
+          <p class="virtual-currency-actions-heading">Send Virtual Currency as Gift</p>
+          <form #sendform="ngForm" (ngSubmit)="send(sendform)">
+          <div class="row" style ="margin-bottom:10px">
+              <div class="col-sm-3">
+                  <label for="amount">Amount</label>
+              </div>
+              <div class="col-sm-6">
+                  <input type="number" class="form-control" id="amount" name= "amount" [(ngModel)]="sendForm.amount">
+              </div>
+          </div>
+          <div class="row" style ="margin-bottom:10px">
+              <div class="col-sm-3">
+                  <label for="recipient">Recipient</label>
+              </div>
+              <div class="col-sm-6">
+                  <input type="text" class="form-control" id="recipient" name="recipient" placeholder="Customer ID of recipient" [(ngModel)]="sendForm.recipient">
+              </div>
+          </div>
+          <div class="virtual-currency-actions">
+              <button class="btn btn-default" type="submit">
+                <span class="glyphicon glyphicon-envelope"></span>Send Now</button>
+          </div>
+        </form>      
+      </div>
+  </div>      
+</div>

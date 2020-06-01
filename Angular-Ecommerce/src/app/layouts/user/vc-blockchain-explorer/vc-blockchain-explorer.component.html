@@ -1,0 +1,136 @@
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#explorer">Blockchain Explorer</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#nodes">Blockchain Nodes</a>
+    </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div class="tab-pane container active" id="explorer">
+      <div class="note">
+        <p style="margin-bottom: 0;"><span style="font-weight: bold;">Description:</span> You can get a list of all transactions with this search or you can get all transactions of a particular person with their respective Kyc ID/customer ID.</p>
+      </div>
+        <div class="row">
+            <div class="col-sm-12" style="text-align:center; margin:auto">
+              <h4>Virtual Currency Block Explorer</h4>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <form>
+              <div class="form-group">
+                <input type="text" class="form-control" name="value" [(ngModel)]="vcex.value">
+              </div>
+              <div class="form-group">
+                <select class="form-control" name="type" [(ngModel)]="vcex.type">
+                  <option value="allTransaction">All Transactions</option>
+                  <option value="transactionsByKyc">Transactions from Kyc ID</option>
+                  <option value="transactionByCustomerId">Transaction from Customer ID</option>
+                </select>
+              </div>
+              <div style="text-align: center;margin:auto">
+                <button
+                  type="submit"  (click)="search()" 
+                  class="btn btn-primary margin-auto btn-search">
+                    Search
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+          <div class="row">
+              <div class="loader" *ngIf="dataloader === true" style="margin: auto;"></div>
+              <div class="col-md-10 offset-md-1" *ngIf="dataloader === false && transactionData.length">
+                <h4 class="table-title">Transaction List</h4>
+                <div *ngFor="let  transaction of transactionData; index as i">
+                  <p class="bold">Transaction number :  {{ i + 1 }}</p>
+                  <table class="table table-striped">
+                    <tbody>
+                      <tr>	
+                        <td class="bold">Kyc ID</td>
+                        <td>{{ transaction.kycId }}</td>
+                      </tr>
+                      <tr>	
+                        <td class="bold">Document ID</td>
+                        <td>{{ transaction.typeOfAction }}</td>
+                      </tr>
+                      <tr>	
+                        <td class="bold">Customer ID</td>
+                        <td>{{ transaction.customerId }}</td>
+                      </tr>
+                      <tr>	
+                          <td class="bold">Amount</td>
+                          <td>{{ transaction.amount }}</td>
+                      </tr>
+                      <tr>	
+                          <td class="bold">Balance</td>
+                          <td>{{ transaction.balance }}</td>
+                      </tr>
+                      <tr>	
+                          <td class="bold">Sender</td>
+                          <td>{{ transaction.sender }}</td>
+                      </tr>
+                      <tr>	
+                          <td class="bold">Recipient</td>
+                          <td>{{ transaction.recipient }}</td>
+                      </tr>
+                      <tr>	
+                        <td class="bold">Transactions ID</td>
+                        <td>{{ transaction.transactionId }}</td>
+                      </tr>
+                      <tr>	
+                          <td class="bold">transaction Created On</td>
+                          <td>{{ transaction.transactionCreatedOn }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-md-10 offset-md-1" *ngIf="dataloader === false && !transactionData.length">
+                <p  class="no-data-text">
+                  No data found for search.
+                </p>
+              </div>
+          </div>       
+    </div>
+    <!-- nodes list UI -->
+    <div class="tab-pane container fade" id="nodes">
+      <div class="note">
+        <p style="margin-bottom: 0;"><span style="font-weight: bold;">Description:</span> You can add a new Node(Server) that can be part of a consensus. This application is connected to this Blockchain ledger (<a target="_blank" href="https://blockchain-virtual-currency.herokuapp.com/blockchain">VC-Blockchain-ledger-1</a>). All the transactions that happened will be recorded in this ledger.</p>
+        <p  style="margin-bottom: 0;">Just to try you can add another blockchain ledger. Use this URL(https://blockchain-2-virtual-currency.herokuapp.com) to add a new Node.</p>
+        <p  style="margin-bottom: 0;">Now, whenever the user does a transaction(purchasing with VC, recharge VC, or sending VC to others account) it will be recorded in the <a target="_blank"href="https://blockchain-virtual-currency.herokuapp.com/blockchain">VC-Blockchain-ledger-1</a> and in all other Nodes that are part of consensus and mining like <a target="_blank" href="https://blockchain-2-virtual-currency.herokuapp.com/blockchain">VC-Blockchain-ledger-2</a> which you just added.</p>
+      </div>
+      <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-12" *ngIf="registeredNodes.length">
+          <h4>List of Registered Nodes</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngFor="let node of registeredNodes">{{ node }}</li>
+            </ul>
+        </div>
+        <div class="col-md-10 offset-md-1" *ngIf="!registeredNodes.length">
+            <p  class="no-data-text">
+              No Nodes Registered.
+            </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+            <h4>Enter URL to Register Node</h4>
+            <div class="form-group">
+                <input type="text" class="form-control" name="value" [(ngModel)]="registerNodeURL">
+            </div>
+            <div style="text-align: center;margin:auto">
+                <button
+                  type="submit"  (click)="registerNodes()" 
+                  class="btn btn-primary margin-auto btn-search">
+                    Register Node
+                </button>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,137 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="col-12 p-0 pt-3 pb-4">
+      <form #loginForm="ngForm" (ngSubmit)="signInWithEmail(loginForm)">
+        <p class="h5 text-center mb-4">Sign In</p>
+
+        <div class="form-group">
+          <label for="loginEmailId">Email address</label>
+          <input type="email" class="form-control" id="loginEmailId" aria-describedby="emailHelp"
+            placeholder="Enter email" name="emailId" [(ngModel)]="user.emailId" mdbInputValidate [email]="true">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="loginPassword" name="loginPassword"
+            [(ngModel)]="user.loginPassword" autocomplete="current-password" placeholder="Password">
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary waves-light" id="loginButton" mdbRippleRadius>Login</button>
+          <!-- <button type="button" class="btn waves-light" (click)="signInWithGoogle()" style="background-color: #dd4b39">
+            <i class="fa fa-google" aria-hidden="true"></i>
+            Sign in with Google
+          </button> -->
+        </div>
+      </form>
+      <p class="pt-2 m-0">New User ?
+        <a data-toggle="modal" data-target="#createUserForm" style="color:dodgerblue">Register here!</a>
+      </p>
+    </div>
+    <div class="col-12 p-0">
+      <div class="note">
+        <h6 style="font-weight:bold">Login Details:</h6>
+        <div>
+          <p style="margin-bottom: 0;font-weight:bold">Admin:</p>
+          <p style="margin-bottom:0">Username: admin@admin.com</p>
+          <p>Password: admin123</p>
+        </div>
+        <div>
+          <p style="margin-bottom: 0;font-weight:bold">User:</p>
+          <p style="margin-bottom:0">Username: user1@user.com</p>
+          <p style="margin-bottom:0">Password: user123</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 p-0">
+      <div class="note">
+        <h6 style="font-weight:bold">Note:</h6>
+        <p class="font-small" style="margin-bottom: 0;">This application is developed without any validation and security in mind.
+          It's just to demonstrate the below Architecture in working. This is an eCommerce application with basic
+          functionality and two blockchain ledgers. One to record Virtual Currency transactions and another to record
+          KYC details of users.</p>
+        <img class="img-fluid pt-2" src="../../../assets/img/architechture.jpg" alt="Architecture">
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="col-12 p-0 pt-3">
+      <div class="note">
+        <h6 style="font-weight:bold">Purpose:</h6>
+        <p class="font-small" style="margin-bottom: 0;">The main purpose of this app is to demonstrate how Blockchain can be introduced in eCommerce to stop the laundering of VC (Virtual Currency).
+        </p>
+        <p class="font-small" style="margin-bottom: 0;">
+          The below diagram explains the process of Virtual Currency laundering. Blockchain is a sequence of blocks linked with hash value that forms a chain. Blockchain is immutable and this can help us in stopping VC laundering. For detailed insight, you can read this publication <a href="https://jespublication.com/upload/2019-V10-I9-95.pdf" target="_blank">Eliminating Laundering Of Virtual Currency Using Blockchain From Online Transaction</a>.
+        </p>
+        <img class="img-fluid pt-2" src="../../../assets/img/laundering-process.png" alt="Architecture">
+      </div>
+    </div>
+    <div class="col-12 p-0">
+      <div class="note">
+        <h6 style="font-weight:bold">Stakeholders:</h6>
+        <p class="font-small">There two stakeholders in this application. They are Users and Admin (authorized organization person).
+        </p>
+        <div class="font-small"> 
+          <p class="m-0" style="font-weight:bold">User:</p>
+          <p class="m-0" >After login, a user can place an order. To enable VC access to enjoy special discounts or send VC to others as gifts etc. the user has to get his KYC done.</p>
+          <ul style="padding-left: 15px;">
+            <li>Login <span class="arrow">-></span>  My Account  <span class="arrow">-></span> KYC  <span class="arrow">-></span> Fill KYC Form and Apply  <span class="arrow">-></span> Once approved KYC ID is assigned and VC option is enabled</li>
+            <li>My Account  <span class="arrow">-></span> Virtual Currency <span class="arrow">-></span> Recharge VC or Send VC</li>
+            <li>Browse Product Catalog <span class="arrow">-></span>  Add a Product to Cart  <span class="arrow">-></span> Checkout and payment <span class="arrow">-></span>
+              There are three payment options Cash on delivery, Debit/Credit card, and Virtual Currency(If User's KYC is approved)</li>
+          </ul>
+        </div>
+        <div class="font-small"> 
+          <p class="m-0" style="font-weight:bold">Admin:</p>
+          <p  class="m-0"> 
+            An Admin can add/delete products and approve KYC requests.
+          </p>
+          <ul style="padding-left: 15px;">
+            <li>Login <span class="arrow">-></span>  My Account  <span class="arrow">-></span> KYC request  <span class="arrow">-></span> Verify Authenticity of KYC Request Document  <span class="arrow">-></span> Approve KYC</li>
+            <li>KYC Explorer  <span class="arrow">-></span> Search KYC Records from KYC-Blockchain <span class="arrow">-></span> Add New Node(Blockchain ledger) in Consensus</li>
+            <li>Virtual Currency Explorer  <span class="arrow">-></span> Search Transaction Details of the User from VC-Blockchain <span class="arrow">-></span> Add New Node(Blockchain ledger) in Consensus</li>
+            <li>Product <span class="arrow">-></span>  Add New Product or Delete Existing Product</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="createUserForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+    <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
+      <div class="modal-content">
+
+        <div class="modal-header light-blue darken-3 white-text">
+          <h4 class="title">
+            <i class="fa fa-user-plus"></i> Register</h4>
+          <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-danger" role="alert" *ngIf="errorInUserCreate">
+            {{errorMessage.message}}
+          </div>
+          <div class="form-group form-sm">
+            <label for="emailId">Your email</label>
+            <input mdbActive type="email" id="emailId" class="form-control" name="emailId"
+              [(ngModel)]="createUser.emailId" placeholder="Enter email" mdbInputValidate [email]="true"
+              autocomplete="email">
+          </div>
+          <div class="form-group form-sm">
+            <label for="password">password</label>
+            <input mdbActive type="password" id="password" class="form-control" name="password"
+              [(ngModel)]="createUser.password" placeholder="Password" mdbInputValidate autocomplete="new-password">
+          </div>
+          <div class="text-center mt-2">
+            <button class="btn btn-info waves-light" id="signUpButton" mdbRippleRadius>Sign up
+              <i class="fa fa-sign-in ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

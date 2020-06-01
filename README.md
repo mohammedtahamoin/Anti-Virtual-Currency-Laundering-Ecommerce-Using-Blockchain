@@ -1,69 +1,46 @@
-# Angular7 - ShoppingCart + MDBootstrap + Firebase + i18n
+# Angular-Ecommerce(Angular7 + Firebase) + Blockchain KYC/Virtual Currency(Node)
 
-[![HitCount](http://hits.dwyl.io/ikismail/Angular-ShoppingCart.svg)](http://hits.dwyl.io/ikismail/Angular-ShoppingCart)
-[![GitHub forks](https://img.shields.io/github/forks/ikismail/Angular-ShoppingCart.svg)](https://github.com/ikismail/Angular-ShoppingCart/network)
-[![Github Dependencies](https://david-dm.org/ikismail/Angular-ShoppingCart.svg)](https://david-dm.org/ikismail/Angular-ShoppingCart.svg)
-[![GitHub stars](https://img.shields.io/github/stars/ikismail/Angular-ShoppingCart.svg)](https://github.com/ikismail/Angular-ShoppingCart/stargazers)
-[![GitHub issues](https://img.shields.io/github/issues/ikismail/Angular-ShoppingCart.svg)](https://github.com/ikismail/Angular-ShoppingCart/issues)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/ikismail/Angular-ShoppingCart/blob/master/LICENSE)
-[![npm](https://img.shields.io/badge/demo-online-brightgreen.svg)](https://angular-shoppingcart.firebaseapp.com/)
-[![Twitter](https://img.shields.io/twitter/url/https/github.com/ikismail/Angular-ShoppingCart.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fikismail%2FAngular-ShoppingCart)
+**Live Demo** : [Angular-shopping-cart](https://angular-ecom-mtech.firebaseapp.com/login)
 
-<!-- [![Build Status](https://travis-ci.org/ikismail/Angular-ShoppingCart.svg?branch=master)](https://travis-ci.org/ikismail/Angular-ShoppingCart) -->
-
-Developing a **ShoppingCart (Ecommerce) Application using Angular7**.
-
-**Live Demo** : [Angular-shopping-cart](https://angular-shoppingcart.firebaseapp.com/)
+**Purpose** The main purpose of this app is to demonstrate how Blockchain can be introduced in eCommerce to stop the laundering of VC (Virtual Currency).It's just to demonstrate the below Architecture in working. This is an eCommerce application with basic functionality and two blockchain ledgers. One to record Virtual Currency transactions and another to record KYC details of users.
+For detailed insight, you can read this publication Eliminating Laundering Of Virtual Currency Using Blockchain From Online Transaction.(https://jespublication.com/upload/2019-V10-I9-95.pdf)
+![Alt text](https://github.com/mohammedtahamoin/Anti-Virtual-Currency-Laundering-Ecommerce-Using-Blockchain/blob/master/Angular-Ecommerce/src/assets/img/architecture.jpg "Architecture")
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.1.
 
-
 ## Functionalities
+There two stakeholders in this application. They are Users and Admin.
 
-1.  User Registration using Firebase Authentication (using Email/Password | Google Authentication )
-2.  CRUD Operations like
+**User:**
+ User Registration using Firebase Authentication (using Email/Password).After login, a user can place an order. To enable VC access to enjoy special discounts or send VC to others as gifts etc. the user has to get his KYC done.
+1. Login -> My Account -> KYC -> Fill KYC Form and Apply -> Once approved KYC ID is assigned and VC option is enabled
+2. My Account -> Virtual Currency -> Recharge VC or Send VC
+3. Browse Product Catalog -> Add a Product to Cart -> Checkout and payment -> There are three payment options Cash on delivery, Debit/Credit card, and Virtual Currency(If User's KYC is approved)
 
-- User can add product to his cart.
-- Admin can add product to the product list
-- Admin can edit/delete the product.
-
-3. Drag and Drop `Angular 7 Drag & Drop`
-- Implemented [Angular Drag and Drop CDK](https://material.angular.io/cdk/drag-drop/overview)
-
-1.  Security
-
-- Implmented Authentication and Authorization
+**Admin:**
+An Admin can add/delete products and approve KYC requests.
+1. Login -> My Account -> KYC request -> Verify Authenticity of KYC Request Document -> Approve KYC
+2. KYC Explorer -> Search KYC Records from KYC-Blockchain -> Add New Node(Blockchain ledger) in Consensus
+3. Virtual Currency Explorer -> Search Transaction Details of the User from VC-Blockchain -> Add New Node(Blockchain ledger) in Consensus
+4. Product -> Add New Product or Delete Existing Product
 
 ## Tools and Technologies
 
-- Technology: HTML, MDBootstrap, CSS, Angular-7, Firebase, i18n, Drag & Drop, Progressive Web Application, jsPDF (to download Receipt as PDF).
-- Database : Angular Firebase.
-
-#### This Projects covers all fundamentals of Angular
-
-- Multiple Modules
-- Components, Template and DataBinding
-- Form Validation
-- HttpClient
-- Animations
-- Dependency Injection
-- Routing & Navigation
-- Service Workers
-- Pipes
-- Gaurds etc..
+- Technology: HTML, MDBootstrap, CSS, Angular-7, Firebase, jsPDF (to download Receipt as PDF) and Node (For Blockchain).
+- Database :  Firebase.
 
 # Installation
 
 1.  Angular CLI
     - [Download Angular CLI](https://cli.angular.io/)
-2.  NodeJs
+2.  Node.Js
     - [Download Nodejs](https://nodejs.org/en/download/)
-3.  Package Manager - NPM / Yarn
-4.  Clone the repository and run `npm install` if you use **npm** as package manager or `yarn install` if you use **yarn** as package manager.
+3.  Package Manager - NPM 
+4.  Clone the repository and run `npm install` in **Angular-Ecommerce**, **Blockchain-kyc** and **Blockchain-virtual-currency**. 
 5.  Angular + Firebase Tutorial - [Angular + Firebase + Typescript — Step by step tutorial](https://medium.com/factory-mind/angular-firebase-typescript-step-by-step-tutorial-2ef887fc7d71)
 6.  Activate Firebase Authentication Providers
 
-    `Authentication -> Sign-in-method -> Enable Email/Password & Google provider`
+    `Authentication -> Sign-in-method -> Enable Email/Password`
 
 7.  Update the Firebase Database Rules
 
@@ -91,7 +68,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
     };
     ```
 
-9.  For Admin Role `Register or SignIn with Google Auth`
+9.  For Admin Role `Register New User`
 
     your registered data will be saved inside the firebase **clients** table.
 
@@ -104,32 +81,17 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
                 ...
     ```
 
-    Now you can able to access the Admin Privileges like `Creating Product, Removing Product, etc..`
+    Now you can able to access the Admin Privileges like `Creating Product, Removing Product, Blockchain Explorer etc..`
 
-10. Run the Server.
-
-## Screenshots:
-
-### Home Page:
-
-![Alt text](https://github.com/ikismail/Angular-ShoppingCart/blob/master/screenshots/home.PNG "Home Page")
-
-### Products Page:
-
-![Alt text](https://github.com/ikismail/Angular-ShoppingCart/blob/master/screenshots/products.PNG "Home Page")
-
-### Work Board Page:
-
-![Alt text](https://github.com/ikismail/Angular-ShoppingCart/blob/master/screenshots/drag&drop.PNG "Home Page")
-
-## How can I support the developer ?
-
-* Star my Github repo ⭐
-* Create pull requests, submit bugs, suggest new features or documentation updates 🛠
+10. Run the servers. 
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. Get into Blockchain-kyc run **npm run node_1** to spinup first Blockchain Node for KYC. The server will run on `http://localhost:3001/`
+2. Get into Blockchain-virtual-currency run **npm run node_1** to spinup first Blockchain Node for Virtual Currency.The server will run on `http://localhost:5001/`
+3. Get into  Angular Ecommerce Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+**Note:** In Angular-Ecommerce/src/app/shared/services/ in (kyc.service.ts/ virtual-currency.service.ts) change localhost port (if you are using any different port to run Blockchain node server)
 
 ## Code scaffolding
 
@@ -139,23 +101,10 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-
-## Somethings wrong!!
-
-- If you find that something's wrong with this package, you can let me know by raising an issue on the GitHub issue tracker
-
 ## License
 
-This project is licensed under the MIT License - see the [MIT license](https://github.com/ikismail/Angular-ShoppingCart/blob/master/LICENSE) file for details
+This project is licensed under the MIT License - see the [MIT license](https://github.com/mohammedtahamoin/Anti-Virtual-Currency-Laundering-Ecommerce-Using-Blockchain/blob/master/LICENSE) file for details

@@ -3,11 +3,8 @@
 **Live Demo** : [Angular-shopping-cart](https://angular-ecom-mtech.firebaseapp.com/login)
 
 **Purpose:** The main purpose of this app is to demonstrate how Blockchain can be introduced in eCommerce to stop the laundering of VC (Virtual Currency). It's just to demonstrate the below Architecture in working. This is an eCommerce application with basic functionality and two blockchain ledgers. One to record Virtual Currency transactions and another to record KYC details of users.
-![Alt text](https://github.com/mohammedtahamoin/Anti-Virtual-Currency-Laundering-Ecommerce-Using-Blockchain/blob/master/Angular-Ecommerce/src/assets/img/architechture.jpg "Architecture")
-The below diagram explains the process of Virtual Currency laundering. Blockchain is a sequence of blocks linked with hash value that forms a chain. Blockchain is immutable and this can help us in stopping VC laundering.
 For detailed insight, you can read this publication [Eliminating Laundering Of Virtual Currency Using Blockchain From Online Transaction](https://jespublication.com/upload/2019-V10-I9-95.pdf)
-![Alt text](https://github.com/mohammedtahamoin/Anti-Virtual-Currency-Laundering-Ecommerce-Using-Blockchain/blob/master/Angular-Ecommerce/src/assets/img/laundering-process.png "laundering process")
-
+![Alt text](https://github.com/mohammedtahamoin/Anti-Virtual-Currency-Laundering-Ecommerce-Using-Blockchain/blob/master/Angular-Ecommerce/src/assets/img/architechture.jpg "Architecture")
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.1.
 

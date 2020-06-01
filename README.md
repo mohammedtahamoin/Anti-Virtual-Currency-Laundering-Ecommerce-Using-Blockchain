@@ -2,23 +2,23 @@
 
 **Live Demo** : [Angular-shopping-cart](https://angular-ecom-mtech.firebaseapp.com/login)
 
-**Purpose** The main purpose of this app is to demonstrate how Blockchain can be introduced in eCommerce to stop the laundering of VC (Virtual Currency).It's just to demonstrate the below Architecture in working. This is an eCommerce application with basic functionality and two blockchain ledgers. One to record Virtual Currency transactions and another to record KYC details of users.
-For detailed insight, you can read this publication Eliminating Laundering Of Virtual Currency Using Blockchain From Online Transaction.(https://jespublication.com/upload/2019-V10-I9-95.pdf)
-![Alt text](https://github.com/mohammedtahamoin/Anti-Virtual-Currency-Laundering-Ecommerce-Using-Blockchain/blob/master/Angular-Ecommerce/src/assets/img/architecture.jpg "Architecture")
+**Purpose:** The main purpose of this app is to demonstrate how Blockchain can be introduced in eCommerce to stop the laundering of VC (Virtual Currency). It's just to demonstrate the below Architecture in working. This is an eCommerce application with basic functionality and two blockchain ledgers. One to record Virtual Currency transactions and another to record KYC details of users.
+For detailed insight, you can read this publication [Eliminating Laundering Of Virtual Currency Using Blockchain From Online Transaction](https://jespublication.com/upload/2019-V10-I9-95.pdf)
+![Alt text](https://github.com/mohammedtahamoin/Anti-Virtual-Currency-Laundering-Ecommerce-Using-Blockchain/blob/master/Angular-Ecommerce/src/assets/img/architechture.jpg "Architecture")
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.1.
 
 ## Functionalities
-There two stakeholders in this application. They are Users and Admin.
+There are two stakeholders in this application. They are Users and Admin.
 
 **User:**
- User Registration using Firebase Authentication (using Email/Password).After login, a user can place an order. To enable VC access to enjoy special discounts or send VC to others as gifts etc. the user has to get his KYC done.
+ User Registration using Firebase Authentication (using Email/Password). After login, a user can place an order. To enable VC access to enjoy special discounts or send VC to others as gifts etc. the user has to get his KYC done.
 1. Login -> My Account -> KYC -> Fill KYC Form and Apply -> Once approved KYC ID is assigned and VC option is enabled
 2. My Account -> Virtual Currency -> Recharge VC or Send VC
 3. Browse Product Catalog -> Add a Product to Cart -> Checkout and payment -> There are three payment options Cash on delivery, Debit/Credit card, and Virtual Currency(If User's KYC is approved)
 
 **Admin:**
-An Admin can add/delete products and approve KYC requests.
+An Admin can Add/Delete products and approve KYC requests.
 1. Login -> My Account -> KYC request -> Verify Authenticity of KYC Request Document -> Approve KYC
 2. KYC Explorer -> Search KYC Records from KYC-Blockchain -> Add New Node(Blockchain ledger) in Consensus
 3. Virtual Currency Explorer -> Search Transaction Details of the User from VC-Blockchain -> Add New Node(Blockchain ledger) in Consensus
@@ -88,7 +88,7 @@ An Admin can add/delete products and approve KYC requests.
 ## Development server
 
 1. Get into Blockchain-kyc run **npm run node_1** to spinup first Blockchain Node for KYC. The server will run on `http://localhost:3001/`
-2. Get into Blockchain-virtual-currency run **npm run node_1** to spinup first Blockchain Node for Virtual Currency.The server will run on `http://localhost:5001/`
+2. Get into Blockchain-virtual-currency run **npm run node_1** to spinup first Blockchain Node for Virtual Currency. The server will run on `http://localhost:5001/`
 3. Get into  Angular Ecommerce Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 **Note:** In Angular-Ecommerce/src/app/shared/services/ in (kyc.service.ts/ virtual-currency.service.ts) change localhost port (if you are using any different port to run Blockchain node server)
